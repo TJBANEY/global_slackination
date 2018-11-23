@@ -4,171 +4,171 @@ app = Chalice(app_name='global_slackination')
 
 countries = {
     'western_australia': {
-        'bordering': [],
+        'bordering': ['indonesia', 'new_guinea', 'eastern_australia'],
         'continent': 'oceania'
     },
     'eastern_australia': {
-        'bordering': [],
+        'bordering': ['new_guinea', 'indonesia'],
         'continent': 'oceania'
     },
     'new_guinea': {
-        'bordering': [],
+        'bordering': ['indonesia', 'western_australia', 'eastern_australia'],
         'continent': 'oceania'
     },
     'indonesia': {
-        'bordering': [],
+        'bordering': ['western_australia', 'new_guinea'],
         'continent': 'oceania'
     },
     'siam': {
-        'bordering': [],
+        'bordering': ['india', 'china', 'indonesia'],
         'continent': 'asia'
     },
     'china': {
-        'bordering': [],
+        'bordering': ['india', 'siam', 'mongolia', 'siberia', 'ural', 'afghanistan'],
         'continent': 'asia'
     },
     'india': {
-        'bordering': [],
+        'bordering': ['siam', 'china', 'afghanistan', 'middle_east'],
         'continent': 'asia'
     },
     'mongolia': {
-        'bordering': [],
+        'bordering': ['japan', 'irkutsk', 'china', 'siberia', 'kamchatka'],
         'continent': 'asia'
     },
     'japan': {
-        'bordering': [],
+        'bordering': ['mongolia', 'kamchatka'],
         'continent': 'asia'
     },
     'kamchatka': {
-        'bordering': [],
+        'bordering': ['yakutsk', 'irkutsk', 'mongolia', 'japan', 'alaska'],
         'continent': 'asia'
     },
     'yakutsk': {
-        'bordering': [],
+        'bordering': ['kamchatka', 'irkutsk', 'siberia'],
         'continent': 'asia'
     },
     'irkutsk': {
-        'bordering': [],
+        'bordering': ['siberia', 'mongolia', 'yakutsk', 'kamchatka'],
         'continent': 'asia'
     },
     'siberia': {
-        'bordering': [],
+        'bordering': ['ural', 'irkutsk', 'yakutsk', 'mongolia', 'china'],
         'continent': 'asia'
     },
     'ural': {
-        'bordering': [],
+        'bordering': ['afghanistan', 'china', 'siberia', 'ukraine'],
         'continent': 'asia'
     },
     'afghanistan': {
-        'bordering': [],
+        'bordering': ['ukraine', 'china', 'india', 'ural', 'middle_east'],
         'continent': 'asia'
     },
     'middle_east': {
-        'bordering': [],
+        'bordering': ['ukraine', 'india', 'egypt', 'afghanistan', 'east_africa', 'south_europe'],
         'continent': 'asia'
     },
     'egypt': {
-        'bordering': [],
+        'bordering': ['north_africa', 'east_africa', 'middle_east', 'south_europe'],
         'continent': 'africa'
     },
     'east_africa': {
-        'bordering': [],
+        'bordering': ['egypt', 'middle_east', 'madagascar', 'congo', 'south_africa', 'north_africa'],
         'continent': 'africa'
     },
     'north_africa': {
-        'bordering': [],
+        'bordering': ['egypt', 'east_africa', 'congo', 'south_europe', 'west_europe', 'brazil'],
         'continent': 'africa'
     },
     'congo': {
-        'bordering': [],
+        'bordering': ['north_africa', 'east_africa', 'south_africa'],
         'continent': 'africa'
     },
     'south_africa': {
-        'bordering': [],
+        'bordering': ['congo', 'madagascar', 'east_africa'],
         'continent': 'africa'
     },
     'madagascar': {
-        'bordering': [],
+        'bordering': ['east_africa', 'south_africa'],
         'continent': 'africa'
     },
     'brazil': {
-        'bordering': [],
+        'bordering': ['peru', 'venezuela', 'argentina', 'north_africa'],
         'continent': 'south_america'
     },
     'argentina': {
-        'bordering': [],
+        'bordering': ['brazil', 'peru'],
         'continent': 'south_america'
     },
     'peru': {
-        'bordering': [],
+        'bordering': ['brazil', 'argentina', 'venezuela'],
         'continent': 'south_america'
     },
     'venezuela': {
-        'bordering': [],
+        'bordering': ['peru', 'brazil', 'central_america'],
         'continent': 'south_america'
     },
     'central_america': {
-        'bordering': [],
+        'bordering': ['venezuela', 'western_united_states', 'eastern_united_states'],
         'continent': 'north_america'
     },
     'western_united_states': {
-        'bordering': [],
+        'bordering': ['central_america', 'eastern_united_states', 'alberta', 'ontario'],
         'continent': 'north_america'
     },
     'eastern_united_states': {
-        'bordering': [],
+        'bordering': ['quebec', 'ontario', 'western_united_states', 'central_america'],
         'continent': 'north_america'
     },
     'ontario': {
-        'bordering': [],
+        'bordering': ['eastern_united_states', 'western_united_states', 'quebec', 'greenland', 'alberta', 'northwest_territory'],
         'continent': 'north_america'
     },
     'quebec': {
-        'bordering': [],
+        'bordering': ['greenland', 'eastern_united_states', 'ontario'],
         'continent': 'north_america'
     },
     'alberta': {
-        'bordering': [],
+        'bordering': ['ontario', 'western_united_states', 'northwest_territory', 'alaska'],
         'continent': 'north_america'
     },
     'alaska': {
-        'bordering': [],
+        'bordering': ['northwest_territory', 'alberta', 'kamchatka'],
         'continent': 'north_america'
     },
     'northwest_territory': {
-        'bordering': [],
+        'bordering': ['alaska', 'alberta', 'ontario', 'greenland'],
         'continent': 'north_america'
     },
     'greenland': {
-        'bordering': [],
+        'bordering': ['quebec', 'ontario', 'northwest_territory', 'iceland'],
         'continent': 'north_america'
     },
     'great_britain': {
-        'bordering': [],
+        'bordering': ['iceland', 'scandanavia', 'north_europe', 'west_europe'],
         'continent': 'europe'
     },
     'iceland': {
-        'bordering': [],
+        'bordering': ['greenland', 'scandanavia', 'great_britain'],
         'continent': 'europe'
     },
     'scandanavia': {
-        'bordering': [],
+        'bordering': ['ukraine', 'north_europe', 'great_britain', 'iceland'],
         'continent': 'europe'
     },
     'west_europe': {
-        'bordering': [],
+        'bordering': ['great_britain', 'north_europe', 'south_europe', 'north_africa'],
         'continent': 'europe'
     },
     'north_europe': {
-        'bordering': [],
+        'bordering': ['great_britain', 'south_europe', 'west_europe', 'ukraine', 'scandanavia'],
         'continent': 'europe'
     },
     'south_europe': {
-        'bordering': [],
+        'bordering': ['egypt', 'north_africa', 'middle_east', 'ukraine', 'north_europe', 'west_europe'],
         'continent': 'europe'
     },
     'ukraine': {
-        'bordering': [],
+        'bordering': ['afghanistan', 'middle_east', 'scandanavia', 'north_europe', 'south_europe', 'ural'],
         'continent': 'europe'
     }
 }

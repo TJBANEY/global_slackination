@@ -1,6 +1,15 @@
 from chalice import Chalice
+import os
+import time
+import re
+import json
+
+from slackclient import SlackClient
 
 app = Chalice(app_name='global_slackination')
+
+sc = SlackClient('xoxb-317583176002-488108846711-kxuLuBeTboOiIPRb5IgqgN9U')
+channel = 'general'
 
 countries = {
     'western_australia': {
@@ -173,7 +182,36 @@ countries = {
     }
 }
 
+# class Territory(object):
+#     name
+#
+# class Player(object):
+#     name
+#     territories
+#     cards
+#
+# class Game(object):
+#     active
 
-@app.route('/')
+
+
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return {'hello': 'world'}
+    print('zz')
+    request = app.current_request
+
+    request_body = request.__dict__.get('_body')
+    payload = json.loads(request_body)
+    event = payload.get('event')
+
+    #Check to see if game is already currently active
+    if 'start game' in event.get('text', ''):
+        return sc.api_call(
+            "chat.postMessage",
+            channel='general',
+            text='Starting a game of Risk, How Many Players?',
+        )
+
+    #
+
+    return {'payload': 'challenge'}
